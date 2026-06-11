@@ -458,6 +458,7 @@ VALUES
     (4,  '2025-03-28', 'DISCIPLINARY', 'Segunda intervencion por inasistencias. Se firma compromiso de asistencia con el acudiente y la coordinadora de la sede.',                               6);
 GO
 
+<<<<<<< Updated upstream
 
 INSERT INTO AuditLog ( TableName, RecordId, ActionType, OldValues, NewValues, ChangedBy)
 VALUES
@@ -473,6 +474,47 @@ VALUES
 ('School', '1', 'D', '{"Name":"Instituto Nacional Promocion Social","Phone":"8439999"}', NULL, 3);
 GO
 
+=======
+INSERT INTO Utility (Page, SubPage, Section, ContentKey, DataArray)
+VALUES
+(
+    'HomePage',
+    'Home',
+    'Levels',
+    'List',
+    '[
+        {
+            "title":"Primaria",
+            "description":"Grados de primero a quinto"
+        }
+    ]'
+),
+(
+    'HomePage',
+    'Home',
+    'Events',
+    'List',
+    '[
+        {
+            "title":"Dia de la Independencia",
+            "date":"2026-07-20"
+        }
+    ]'
+),
+(
+    'HomePage',
+    'AboutUs',
+    'Professors',
+    'List',
+    '[
+        {
+            "name":"Juan Rodriguez",
+            "role":"Profesor de Filosofia"
+        }
+    ]'
+);
+GO
+>>>>>>> Stashed changes
 -- ============================================================
 -- FIN DEL SCRIPT
 -- ============================================================

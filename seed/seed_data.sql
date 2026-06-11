@@ -458,21 +458,6 @@ VALUES
     (4,  '2025-03-28', 'DISCIPLINARY', 'Segunda intervencion por inasistencias. Se firma compromiso de asistencia con el acudiente y la coordinadora de la sede.',                               6);
 GO
 
-
-INSERT INTO AuditLog ( TableName, RecordId, ActionType, OldValues, NewValues, ChangedBy)
-VALUES
-('School', '1', 'I', NULL, '{"Name":"Instituto Nacional Promocion Social"}', 1),
-('School', '1', 'U', '{"Phone":"8432015"}', '{"Phone":"8439999"}', 2),
-('School', '1', 'U', '{"Address":"Calle 4 No. 3-45 Centro"}', '{"Address":"Carrera 5 No. 4-20"}', 2),
-('Campus', '2', 'I', NULL, '{"Name":"Sede La Esmeralda"}', 1),
-('Campus', '3', 'U', '{"Phone":"8432200"}', '{"Phone":"8432210"}', 3),
-('User', '4', 'I', NULL, '{"FirstName":"Maria Consuelo","Role":"TEACHER"}', 1),
-('User', '16', 'U', '{"Email":"juan.morales@estudiante.inps-villeta.edu.co"}', '{"Email":"juan.morales2025@estudiante.inps-villeta.edu.co"}', 4),
-('Enrollment', '1', 'I', NULL, '{"StudentId":16,"ClassroomId":1,"YearId":2025}', 1),
-('GradeScore', '1', 'U', '{"Value":4.50}', '{"Value":4.80}', 4),
-('School', '1', 'D', '{"Name":"Instituto Nacional Promocion Social","Phone":"8439999"}', NULL, 3);
-GO
-
 -- ============================================================
 -- FIN DEL SCRIPT
 -- ============================================================

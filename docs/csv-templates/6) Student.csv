@@ -1,0 +1,4 @@
+﻿TipoDocumento,NumeroDocumento,Nombres,Apellidos,Correo,Contrasena,CampusId,CodigoEstudiante,FechaNacimiento,Genero
+TI,1098765432,Andrés,Martínez,andres.martinez@litaro.com,Pass1234!,1,EST-001,2010-05-14,M
+TI,1087654321,Sofía,Torres,sofia.torres@litaro.com,Pass1234!,1,EST-002,2011-08-22,F
+TI,1076543210,Miguel,Herrera,miguel.herrera@litaro.com,Pass1234!,2,EST-003,2009-11-03,M

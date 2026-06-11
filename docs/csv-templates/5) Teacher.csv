@@ -1,0 +1,4 @@
+﻿TipoDocumento,NumeroDocumento,Nombres,Apellidos,Correo,Contrasena,CampusId,Especialidad
+CC,12345678,Carlos,Ramírez,carlos.ramirez@litaro.com,Pass1234!,1,Matemáticas
+CC,87654321,Laura,Gómez,laura.gomez@litaro.com,Pass1234!,1,Ciencias Naturales
+CC,11223344,Pedro,Suárez,pedro.suarez@litaro.com,Pass1234!,2,Historia

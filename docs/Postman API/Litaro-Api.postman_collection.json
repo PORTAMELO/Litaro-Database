@@ -1,0 +1,947 @@
+{
+  "info": {
+    "_postman_id": "c2cc952a-ac33-4c56-a63b-ca53fdd9ef02",
+    "name": "Litaro-Api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "38803214"
+  },
+  "item": [
+    {
+      "name": "School",
+      "item": [
+        {
+          "name": "All School",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/schools",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "schools"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get by SchoolId",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/schools/{{school_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "schools",
+                "{{school_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create School",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "pm.environment.set(\"school_id\", response.schoolId);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Prueba Sede PostMan\",\r\n  \"address\": \"La Calera\",\r\n  \"phone\": \"3228400000\",\r\n  \"active\": true,\r\n  \"schoolId\": 2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/schools",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "schools"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update School",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Prueba PostMan\",\r\n  \"nit\": \"123987465\",\r\n  \"address\": \"La Calera\",\r\n  \"phone\": \"3228400000\",\r\n  \"active\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/schools/{{school_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "schools",
+                "{{school_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deactivate School",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/schools/{{school_id}}/close",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "schools",
+                "{{school_id}}",
+                "close"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Activate School",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/schools/{{school_id}}/activate",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "schools",
+                "{{school_id}}",
+                "activate"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Import School CSV",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "pm.environment.set(\"school_id\", response.schoolId);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "File",
+                  "type": "file",
+                  "uuid": "83e22cc8-de17-44bc-83d3-95dd3121e5c4",
+                  "src": "/C:/Users/wacg3/Desktop/Litaro/Litaro-Database/docs/csv-templates/1) School.csv"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/schools/import",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "schools",
+                "import"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Campus",
+      "item": [
+        {
+          "name": "All Campus",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/campus",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "campus"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get by CampusId",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/campus/{{campus_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "campus",
+                "{{campus_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Campus",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "pm.environment.set(\"school_id\", response.schoolId);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Prueba PostMan\",\r\n  \"nit\": \"123987465\",\r\n  \"address\": \"La Calera\",\r\n  \"phone\": \"3228400000\",\r\n  \"active\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/schools",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "schools"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Import Campus CSV",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "pm.environment.set(\"school_id\", response.schoolId);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "File",
+                  "type": "file",
+                  "uuid": "ed1319ad-7039-4537-af20-467f1a89804d",
+                  "src": "/C:/Users/wacg3/Desktop/Litaro/Litaro-Database/docs/csv-templates/2) Campus.csv"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/campus/import",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "campus",
+                "import"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Campus",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Prueba Sede con PostMan\",\r\n  \"address\": \"La Calera\",\r\n  \"phone\": \"3228400000\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/campus/{{campus_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "campus",
+                "{{campus_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deactivate Campus",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/campus/{{campus_id}}/close",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "campus",
+                "{{campus_id}}",
+                "close"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Activate Campus",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/campus/{{campus_id}}/activate",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "campus",
+                "{{campus_id}}",
+                "activate"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "AcademicYear",
+      "item": [
+        {
+          "name": "All AcademicYear",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/academic-years",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "academic-years"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get by AcademicYearId",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/academic-years/{{AcademicYear_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "academic-years",
+                "{{AcademicYear_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create AcademicYear",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "pm.environment.set(\"school_id\", response.schoolId);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"yearId\": 2026,\r\n    \"startDate\": \"2026-01-15T00:00:00\",\r\n    \"endDate\": \"2026-11-30T00:00:00\",\r\n    \"status\": \"ACTIVE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/academic-years",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "academic-years"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Import AcademicYear CSV",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "pm.environment.set(\"school_id\", response.schoolId);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "File",
+                  "type": "file",
+                  "uuid": "5eaae945-4734-4380-b1e8-f7e412d70410",
+                  "src": "/C:/Users/wacg3/Desktop/Litaro/Litaro-Database/docs/csv-templates/3) AcademicYear.csv"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/academic-years/import",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "academic-years",
+                "import"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update AcademicYear",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"startDate\": \"2026-02-01T00:00:00\",\r\n    \"endDate\": \"2026-12-15T00:00:00\",\r\n    \"status\": \"ACTIVE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/academic-years/{{AcademicYear_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "academic-years",
+                "{{AcademicYear_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deactivate AcademicYear",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/academic-years/{{AcademicYear_id}}/close",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "academic-years",
+                "{{AcademicYear_id}}",
+                "close"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Activate AcademicYear",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/academic-years/{{AcademicYear_id}}/activate",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "academic-years",
+                "{{AcademicYear_id}}",
+                "activate"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "AcademicPeriod",
+      "item": [
+        {
+          "name": "All AcademicPeriod",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/academic-periods",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "academic-periods"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get by AcademicPeriod",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/academic-periods/{{AcademicPeriod_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "academic-periods",
+                "{{AcademicPeriod_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create AcademicPeriod",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "pm.environment.set(\"school_id\", response.schoolId);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"periodNumber\": 9,\r\n    \"startDate\": \"2026-01-15T00:00:00\",\r\n    \"endDate\": \"2026-03-30T00:00:00\",\r\n    \"yearId\": 2025\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/academic-periods",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "academic-periods"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Import AcademicPeriod CSV",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "File",
+                  "type": "file",
+                  "uuid": "1fce73af-58db-4229-85fe-5d05d001f929",
+                  "src": "/C:/Users/wacg3/Desktop/Litaro/Litaro-Database/docs/csv-templates/4) AcademicPeriod.csv"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/academic-periods/import",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "academic-periods",
+                "import"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update AcademicPeriod",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"periodNumber\": 14,\r\n    \"startDate\": \"2026-01-15T00:00:00\",\r\n    \"endDate\": \"2026-03-30T00:00:00\",\r\n    \"yearId\": 2025\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/academic-periods/{{AcademicPeriod_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "academic-periods",
+                "{{AcademicPeriod_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete AcademicPeriod",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/academic-periods/{{AcademicPeriod_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "academic-periods",
+                "{{AcademicPeriod_id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Teacher",
+      "item": [
+        {
+          "name": "Import Teacher CSV",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "File",
+                  "type": "file",
+                  "uuid": "1fce73af-58db-4229-85fe-5d05d001f929",
+                  "src": "/C:/Users/wacg3/Desktop/Litaro/Litaro-Database/docs/csv-templates/5) Teacher.csv"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/teachers/import",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "teachers",
+                "import"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "All Teacher",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/teachers",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "teachers"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Student",
+      "item": [
+        {
+          "name": "Import Student CSV",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "File",
+                  "type": "file",
+                  "uuid": "1fce73af-58db-4229-85fe-5d05d001f929",
+                  "src": "/C:/Users/wacg3/Desktop/Litaro/Litaro-Database/docs/csv-templates/6) Student.csv"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/students/import",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "students",
+                "import"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "All Student",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{base_url}}/students",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "students"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Student Copy",
+      "item": [
+        {
+          "name": "Import Parent CSV",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "File",
+                  "type": "file",
+                  "uuid": "1fce73af-58db-4229-85fe-5d05d001f929",
+                  "src": "/C:/Users/wacg3/Desktop/Litaro/Litaro-Database/docs/csv-templates/7) Parent.csv"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/parents/import",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "parents",
+                "import"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "All Parent",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{base_url}}/parents",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "parents"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

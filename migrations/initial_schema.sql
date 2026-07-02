@@ -291,15 +291,11 @@ GO
 CREATE INDEX IXStudentLogEnrollment       ON StudentLog(EnrollmentId);
 GO
 
-<<<<<<< Updated upstream
-
 -- ============================================================
 -- 9. AUDITORIA
 -- ============================================================
 
-
 CREATE TABLE AuditLog (
-
     AuditId         BIGINT                  IDENTITY(1,1) PRIMARY KEY,
     TableName       VARCHAR(100)            NOT NULL,
     RecordId        VARCHAR(100)            NOT NULL,
@@ -311,22 +307,49 @@ CREATE TABLE AuditLog (
 );
 GO
 
+-- ============================================================
+-- 10. ADMINISTRACION DE PAGINA WEB
+-- ============================================================
 
-=======
-CREATE TABLE Utility (
-    UtilityId       INT                     NOT NULL IDENTITY(1,1),
-    Page            VARCHAR(50)             NOT NULL,
-    SubPage         VARCHAR(50)             NULL,
-    Section         VARCHAR(100)            NOT NULL,
-    ContentKey      VARCHAR(100)            NOT NULL,
-    DataArray       NVARCHAR(MAX)           NOT NULL,
-    CONSTRAINT      PKUtility               PRIMARY KEY (UtilityId),
-    CONSTRAINT      UQUtilityLocation
-                    UNIQUE (Page, SubPage, Section, ContentKey)
+CREATE TABLE WebContentConfiguration (
+    WebContentConfigurationId INT           NOT NULL IDENTITY(1,1),
+    PageName        VARCHAR(50)             NOT NULL,
+    SectionName     VARCHAR(50)             NOT NULL,
+    ContentKey      VARCHAR(50)             NOT NULL,
+    MinItems        INT                     NOT NULL CONSTRAINT DFWebContentConfigMinItems DEFAULT 0,
+    MaxItems        INT                     NULL,
+    Active          BIT                     NOT NULL CONSTRAINT DFWebContentConfigActive DEFAULT 1,
+    CreationDate    DATETIME2               NOT NULL CONSTRAINT DFWebContentConfigCreationDate DEFAULT SYSDATETIME(),
+    CONSTRAINT      PKWebContentConfiguration   PRIMARY KEY (WebContentConfigurationId),
+    CONSTRAINT      UQWebContentConfiguration   UNIQUE (PageName, SectionName, ContentKey),
+    CONSTRAINT      CKWebContentConfigMinItems  CHECK (MinItems >= 0),
+    CONSTRAINT      CKWebContentConfigMaxItems  CHECK (MaxItems IS NULL OR MaxItems > 0),
+    CONSTRAINT      CKWebContentConfigMinMax    CHECK (MaxItems IS NULL OR MaxItems >= MinItems)
 );
 GO
 
->>>>>>> Stashed changes
+CREATE TABLE WebContent (
+    WebContentId    INT                     NOT NULL IDENTITY(1,1),
+    PageName        VARCHAR(50)             NOT NULL,
+    SectionName     VARCHAR(50)             NOT NULL,
+    ContentKey      VARCHAR(50)             NOT NULL,
+    DisplayOrder    INT                     NOT NULL CONSTRAINT DFWebContentDisplayOrder DEFAULT 0,
+    DataJson        NVARCHAR(MAX)           NOT NULL,
+    Active          BIT                     NOT NULL CONSTRAINT DFWebContentActive DEFAULT 1,
+    CreationDate    DATETIME2               NOT NULL CONSTRAINT DFWebContentCreationDate DEFAULT SYSDATETIME(),
+    UpdateDate      DATETIME2               NULL,
+    CONSTRAINT      PKWebContent            PRIMARY KEY (WebContentId),
+    CONSTRAINT      CKWebContentJson        CHECK (ISJSON(DataJson) = 1),
+    CONSTRAINT      FKWebContentConfiguration   FOREIGN KEY (PageName, SectionName, ContentKey)     REFERENCES WebContentConfiguration(PageName, SectionName, ContentKey)
+);
+GO
+
+CREATE INDEX IXWebContentPageSection        ON WebContent(PageName, SectionName);
+GO
+
+CREATE INDEX IXWebContentDisplayOrder       ON WebContent(PageName, SectionName, DisplayOrder);
+GO
+
 -- ============================================================
 -- FIN DEL SCRIPT
 -- ============================================================

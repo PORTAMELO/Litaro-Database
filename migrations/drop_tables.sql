@@ -23,9 +23,7 @@ DROP TABLE IF EXISTS AcademicPeriod;
 DROP TABLE IF EXISTS AcademicYear;
 DROP TABLE IF EXISTS Campus;
 DROP TABLE IF EXISTS School;
-<<<<<<< Updated upstream
 DROP TABLE IF EXISTS AuditLog;
-=======
-DROP TABLE IF EXISTS Utility;
->>>>>>> Stashed changes
+DROP TABLE IF EXISTS WebContent;
+DROP TABLE IF EXISTS WebContentConfiguration;
 GO

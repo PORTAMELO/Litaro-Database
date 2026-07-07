@@ -313,41 +313,41 @@ GO
 
 CREATE TABLE WebContentConfiguration (
     WebContentConfigurationId INT           NOT NULL IDENTITY(1,1),
-    PageName        VARCHAR(50)             NOT NULL,
-    SectionName     VARCHAR(50)             NOT NULL,
-    ContentKey      VARCHAR(50)             NOT NULL,
-    MinItems        INT                     NOT NULL CONSTRAINT DFWebContentConfigMinItems DEFAULT 0,
-    MaxItems        INT                     NULL,
-    Active          BIT                     NOT NULL CONSTRAINT DFWebContentConfigActive DEFAULT 1,
-    CreationDate    DATETIME2               NOT NULL CONSTRAINT DFWebContentConfigCreationDate DEFAULT SYSDATETIME(),
-    CONSTRAINT      PKWebContentConfiguration   PRIMARY KEY (WebContentConfigurationId),
-    CONSTRAINT      UQWebContentConfiguration   UNIQUE (PageName, SectionName, ContentKey),
-    CONSTRAINT      CKWebContentConfigMinItems  CHECK (MinItems >= 0),
-    CONSTRAINT      CKWebContentConfigMaxItems  CHECK (MaxItems IS NULL OR MaxItems > 0),
-    CONSTRAINT      CKWebContentConfigMinMax    CHECK (MaxItems IS NULL OR MaxItems >= MinItems)
+    PageName                  VARCHAR(50)   NOT NULL,
+    SectionName               VARCHAR(50)   NOT NULL,
+    ContentKey                VARCHAR(50)   NOT NULL,
+    MinItems                  INT           NOT NULL CONSTRAINT DFWebContentConfigMinItems DEFAULT 0,
+    MaxItems                  INT           NULL,
+    TemplateJson              NVARCHAR(MAX) NOT NULL,
+    Active                    BIT           NOT NULL CONSTRAINT DFWebContentConfigActive DEFAULT 1,
+    CreationDate              DATETIME2     NOT NULL CONSTRAINT DFWebContentConfigCreationDate DEFAULT SYSDATETIME(),
+    CONSTRAINT  PK_WebContentConfiguration  PRIMARY KEY (WebContentConfigurationId),
+    CONSTRAINT UQ_WebContentConfiguration   UNIQUE (PageName, SectionName, ContentKey),
+    CONSTRAINT CK_WebContentConfiguration_MinItems  CHECK (MinItems >= 0),
+    CONSTRAINT CK_WebContentConfiguration_MaxItems  CHECK (MaxItems IS NULL OR MaxItems > 0),
+    CONSTRAINT CK_WebContentConfiguration_MinMax    CHECK (MaxItems IS NULL OR MaxItems >= MinItems),
+    CONSTRAINT CK_WebContentConfiguration_TemplateJson  CHECK (ISJSON(TemplateJson) = 1)
 );
 GO
+
 
 CREATE TABLE WebContent (
-    WebContentId    INT                     NOT NULL IDENTITY(1,1),
-    PageName        VARCHAR(50)             NOT NULL,
-    SectionName     VARCHAR(50)             NOT NULL,
-    ContentKey      VARCHAR(50)             NOT NULL,
-    DisplayOrder    INT                     NOT NULL CONSTRAINT DFWebContentDisplayOrder DEFAULT 0,
-    DataJson        NVARCHAR(MAX)           NOT NULL,
-    Active          BIT                     NOT NULL CONSTRAINT DFWebContentActive DEFAULT 1,
-    CreationDate    DATETIME2               NOT NULL CONSTRAINT DFWebContentCreationDate DEFAULT SYSDATETIME(),
-    UpdateDate      DATETIME2               NULL,
-    CONSTRAINT      PKWebContent            PRIMARY KEY (WebContentId),
-    CONSTRAINT      CKWebContentJson        CHECK (ISJSON(DataJson) = 1),
-    CONSTRAINT      FKWebContentConfiguration   FOREIGN KEY (PageName, SectionName, ContentKey)     REFERENCES WebContentConfiguration(PageName, SectionName, ContentKey)
+    WebContentId              INT           NOT NULL IDENTITY(1,1),
+    PageName                  VARCHAR(50)   NOT NULL,
+    SectionName               VARCHAR(50)   NOT NULL,
+    ContentKey                VARCHAR(50)   NOT NULL,
+    DisplayOrder              INT           NOT NULL CONSTRAINT DF_WebContent_DisplayOrder DEFAULT 0,
+    DataJson                  NVARCHAR(MAX) NOT NULL,
+    Active                    BIT           NOT NULL CONSTRAINT DF_WebContent_Active DEFAULT 1,
+    CreationDate              DATETIME2     NOT NULL CONSTRAINT DF_WebContent_CreationDate DEFAULT SYSDATETIME(),
+    UpdateDate                DATETIME2     NULL,
+    CONSTRAINT PK_WebContent                PRIMARY KEY (WebContentId),
+    CONSTRAINT CK_WebContent_DataJson       CHECK (ISJSON(DataJson) = 1),
+    CONSTRAINT FK_WebContent_WebContentConfiguration    FOREIGN KEY (PageName, SectionName, ContentKey) REFERENCES WebContentConfiguration(PageName, SectionName, ContentKey)
 );
 GO
 
-CREATE INDEX IXWebContentPageSection        ON WebContent(PageName, SectionName);
-GO
-
-CREATE INDEX IXWebContentDisplayOrder       ON WebContent(PageName, SectionName, DisplayOrder);
+CREATE INDEX IXWebContentDisplayOrder       ON WebContent(PageName, SectionName, ContentKey, DisplayOrder);
 GO
 
 -- ============================================================

@@ -458,7 +458,9 @@ VALUES
     (4,  '2025-03-28', 'DISCIPLINARY', 'Segunda intervencion por inasistencias. Se firma compromiso de asistencia con el acudiente y la coordinadora de la sede.',                               6);
 GO
 
-<<<<<<< Updated upstream
+-- ============================================================
+-- 9. AUDITORIA
+-- ============================================================
 
 INSERT INTO AuditLog ( TableName, RecordId, ActionType, OldValues, NewValues, ChangedBy)
 VALUES
@@ -474,47 +476,82 @@ VALUES
 ('School', '1', 'D', '{"Name":"Instituto Nacional Promocion Social","Phone":"8439999"}', NULL, 3);
 GO
 
-=======
-INSERT INTO Utility (Page, SubPage, Section, ContentKey, DataArray)
+-- ============================================================
+-- 10. ADMINISTRACION DE PAGINA WEB
+-- ============================================================
+
+INSERT INTO WebContentConfiguration
+(PageName, SectionName, ContentKey, MinItems, MaxItems, TemplateJson, Active, CreationDate)
 VALUES
-(
-    'HomePage',
-    'Home',
-    'Levels',
-    'List',
-    '[
-        {
-            "title":"Primaria",
-            "description":"Grados de primero a quinto"
-        }
-    ]'
-),
-(
-    'HomePage',
-    'Home',
-    'Events',
-    'List',
-    '[
-        {
-            "title":"Dia de la Independencia",
-            "date":"2026-07-20"
-        }
-    ]'
-),
-(
-    'HomePage',
-    'AboutUs',
-    'Professors',
-    'List',
-    '[
-        {
-            "name":"Juan Rodriguez",
-            "role":"Profesor de Filosofia"
-        }
-    ]'
-);
+('Home', 'Introduction', 'Description', 1, 1, '{"description":""}', 1, '20260705'),
+('Home', 'Locations', 'Cards', 1, NULL, '{"title":"","description":"","image":""}', 1, '20260705'),
+('Home', 'Levels', 'Cards', 1, NULL, '{"title":"","description":"","image":""}', 1, '20260705'),
+('Home', 'Events', 'Cards', 0, NULL, '{"title":"","category":"","date":"","duration":"","place":"","asistants":"","description":"","image":"","color":""}', 1, '20260705'),
+('Home', 'Banners', 'Statistics', 1, NULL, '{"label":"","value":""}', 1, '20260705'),
+('Home', 'Banners', 'Values', 1, NULL, '{"label":"","value":""}', 1, '20260705'),
+('AboutUs', 'Introduction', 'Description', 1, 1, '{"description":""}', 1, '20260705'),
+('AboutUs', 'MissionVision', 'Mission', 1, 1, '{"description":""}', 1, '20260705'),
+('AboutUs', 'MissionVision', 'Vision', 1, 1, '{"description":""}', 1, '20260705'),
+('AboutUs', 'Professors', 'Cards', 1, NULL, '{"name":"","role":"","description":"","image":""}', 1, '20260705'),
+('Calendar', 'Events', 'Cards', 0, NULL, '{"title":"","category":"","date":"","duration":"","place":"","asistants":"","description":"","color":""}', 1, '20260705'),
+('Admissions', 'Introduction', 'Description', 1, 1, '{"description":""}', 1, '20260705'),
+('Admissions', 'Steps', 'Cards', 1, NULL, '{"description":""}', 1, '20260705');
 GO
->>>>>>> Stashed changes
+
+INSERT INTO WebContent (PageName, SectionName, ContentKey, DisplayOrder, DataJson, Active, CreationDate)
+VALUES
+('Home', 'Introduction', 'Description', 1, '{"description":"Individuals that have been set free by Trainers who could no longer raise them have become common and they can now be found in Alola.\n\nSlugma does not have any blood in its body. Instead, intensely hot magma circulates throughout this Pokémon’s body, carrying essential nutrients and oxygen to its organs.\n\nKingler has an enormous, oversized claw. It waves this huge claw in the air to communicate with others. However, because the claw is so heavy, the Pokémon quickly tires.\n\nBayleef’s neck is ringed by curled-up leaves. Inside each tubular leaf is a small shoot of a tree. The fragrance of this shoot makes people peppy.\n\nKrabby live on beaches, burrowed inside holes dug into the sand. On sandy beaches with little in the way of food, these Pokémon can be seen squabbling with each other over territory.\n\nNumel stores magma of almost 2,200 degrees Fahrenheit within its body. If it gets wet, the magma cools and hardens. In that event, the Pokémon’s body grows heavy and its movements become sluggish."}', 1, '20260705'),
+('Home', 'Locations', 'Cards', 1, '{"title":"Sede Uno", "description":"Individuals that have been set free by Trainers who could no longer raise them have become common and they can now be found in Alola.Slugma does not have any blood in its body. Instead, intensely hot magma circulates throughout this Pokémon’s body, carrying essential nutrients and oxygen to its organs.Kingler has an enormous, oversized claw. It waves this huge claw in the air to communicate with others. However, because the claw is so heavy, the Pokémon quickly tires.", "image":"colegio", "map":"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.0274178414957!2d-74.15683797526184!3d4.589102495385531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9ee20f205309%3A0xdabc9f42e6891511!2sLa%20Isla%20del%20Sol%2C%20Tunjuelito%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1777607374744!5m2!1ses!2sco"}', 1, '20260705'),
+('Home', 'Locations', 'Cards', 2, '{"title":"Sede Dos", "description":"Individuals that have been set free by Trainers who could no longer raise them have become common and they can now be found in Alola.Slugma does not have any blood in its body. Instead, intensely hot magma circulates throughout this Pokémon’s body, carrying essential nutrients and oxygen to its organs.Kingler has an enormous, oversized claw. It waves this huge claw in the air to communicate with others. However, because the claw is so heavy, the Pokémon quickly tires.", "image":"colegio", "map":"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.007417837312!2d-74.07113779611724!3d4.592690801834649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99aee5ebe031%3A0x58b7bc4ea2eed86b!2sIglesia%20de%20Nuestra%20Se%C3%B1ora%20de%20Egipto!5e0!3m2!1ses!2sco!4v1777607486294!5m2!1ses!2sco"}', 1, '20260705'),
+('Home', 'Locations', 'Cards', 3, '{"title":"Sede Tres", "description":"Individuals that have been set free by Trainers who could no longer raise them have become common and they can now be found in Alola.Slugma does not have any blood in its body. Instead, intensely hot magma circulates throughout this Pokémon’s body, carrying essential nutrients and oxygen to its organs.Kingler has an enormous, oversized claw. It waves this huge claw in the air to communicate with others. However, because the claw is so heavy, the Pokémon quickly tires.", "image":"colegio", "map":"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.1411212335665!2d-74.0159535946034!3d4.568648926788628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9793439fc21b%3A0x22110782cf6083b2!2sParador%20Villa%20Paula!5e0!3m2!1ses!2sco!4v1777607536717!5m2!1ses!2sco"}', 1, '20260705'),
+('Home', 'Levels', 'Cards', 1, '{"image":"colegio", "title":"Preescolar", "description":"Preparacion para la vida academica"}', 1, '20260705'),
+('Home', 'Levels', 'Cards', 2, '{"image":"colegio", "title":"Primaria", "description":"Grados de primero a quinto"}', 1, '20260705'),
+('Home', 'Levels', 'Cards', 3, '{"image":"colegio", "title":"Secundaria", "description":"Grados de sexto a once"}',1, '20260705'),
+('Home', 'Events', 'Cards', 1, '{"image":"colegio", "label":"Cultural", "date":"21 de Julio", "grade":"Grados 10 y 11", "title":"Dia de la independencia", "description":"Dia nacional en conmemoración de la independencia de Colombia del reino de España"}', 1, '20260705'),
+('Home', 'Events', 'Cards', 2, '{"image":"colegio", "label":"Cultural", "date":"21 de Julio", "grade":"Grados 10 y 11", "title":"Dia de la independencia", "description":"Dia nacional en conmemoración de la independencia de Colombia del reino de España"}', 1, '20260705'),
+('Home', 'Events', 'Cards', 3, '{"image":"colegio", "label":"Cultural", "date":"21 de Julio", "grade":"Grados 10 y 11", "title":"Dia de la independencia", "description":"Dia nacional en conmemoración de la independencia de Colombia del reino de España"}', 1, '20260705'),
+('Home', 'Events', 'Cards', 4, '{"image":"colegio", "label":"Cultural", "date":"21 de Julio", "grade":"Grados 10 y 11", "title":"Dia de la independencia", "description":"Dia nacional en conmemoración de la independencia de Colombia del reino de España"}', 1, '20260705'),
+('Home', 'Events', 'Cards', 5, '{"image":"colegio", "label":"Cultural", "date":"21 de Julio", "grade":"Grados 10 y 11", "title":"Dia de la independencia", "description":"Dia nacional en conmemoración de la independencia de Colombia del reino de España"}', 1, '20260705'),
+('Home', 'Events', 'Cards', 6, '{"image":"colegio", "label":"Cultural", "date":"21 de Julio", "grade":"Grados 10 y 11", "title":"Dia de la independencia", "description":"Dia nacional en conmemoración de la independencia de Colombia del reino de España"}', 1, '20260705'),
+('Home', 'Events', 'Cards', 7, '{"image":"colegio", "label":"Cultural", "date":"21 de Julio", "grade":"Grados 10 y 11", "title":"Dia de la independencia", "description":"Dia nacional en conmemoración de la independencia de Colombia del reino de España"}', 1, '20260705'),
+('Home', 'Events', 'Cards', 8, '{"image":"colegio", "label":"Cultural", "date":"21 de Julio", "grade":"Grados 10 y 11", "title":"Dia de la independencia", "description":"Dia nacional en conmemoración de la independencia de Colombia del reino de España"}', 1, '20260705'),
+('Home', 'Banners', 'Statistics', 1, '{"title":"~ 1800", "subtitle":"Estudiantes"}', 1, '20260705'),
+('Home', 'Banners', 'Statistics', 2, '{"title":"7", "subtitle":"Sedes"}', 1, '20260705'),
+('Home', 'Banners', 'Statistics', 3, '{"title":"45", "subtitle":"Años de historia"}', 1, '20260705'),
+('Home', 'Banners', 'Statistics', 4, '{"title":"> 3200", "subtitle":"Egresados"}', 1, '20260705'),
+('Home', 'Banners', 'Values', 1, '{"title":"Respeto"}', 1, '20260705'),
+('Home', 'Banners', 'Values', 2, '{"title":"Responsabilidad"}', 1, '20260705'),
+('Home', 'Banners', 'Values', 3, '{"title":"Excelencia"}', 1, '20260705'),
+('Home', 'Banners', 'Values', 4, '{"title":"Disciplina"}', 1, '20260705'),
+('Home', 'Banners', 'Values', 5, '{"title":"Compromiso"}', 1, '20260705'),
+('AboutUs', 'Introduction', 'Description', 1, '{"description":"Seadra generates whirlpools by spinning its body. The whirlpools are strong enough to swallow even fishing boats. This Pokémon weakens prey with these currents, then swallows it whole.Overjoyed at finally being able to fly, it flies all over the place and usually doesn’t land until it’s completely exhausted and needs to sleep.Minun loves to cheer on its partner in battle. It gives off sparks from its body while it is doing so. If its partner is in trouble, this Pokémon gives off increasing amounts of sparks.\n\nPostcards and posters featuring Mantine leaping elegantly above the waves are popular souvenirs of Alola.It drifts through the sea searching for prey. Its poisonous tentacles break off sometimes, but after a while, they grow back.Delicate equipment can malfunction in areas inhabited by Magneton, which send out mysterious electrical signals."}', 1, '20260705'),
+('AboutUs', 'MissionVision', 'Mission', 1, '{"description":"Seadra generates whirlpools by spinning its body. The whirlpools are strong enough to swallow even fishing boats. This Pokémon weakens prey with these currents, then swallows it whole.Overjoyed at finally being able to fly, it flies all over the place and usually doesn’t land until it’s completely exhausted and needs to sleep.Minun loves to cheer on its partner in battle. It gives off sparks from its body while it is doing so. If its partner is in trouble, this Pokémon gives off increasing amounts of sparks.\n\nPostcards and posters featuring Mantine leaping elegantly above the waves are popular souvenirs of Alola.It drifts through the sea searching"}', 1, '20260705'),
+('AboutUs', 'MissionVision', 'Vision', 1, '{"description":"Seadra generates whirlpools by spinning its body. The whirlpools are strong enough to swallow even fishing boats. This Pokémon weakens prey with these currents, then swallows it whole.Overjoyed at finally being able to fly, it flies all over the place and usually doesn’t land until it’s completely exhausted and needs to sleep.Minun loves to cheer on its partner in battle. It gives off sparks from its body while it is doing so. If its partner is in trouble, this Pokémon gives off increasing amounts of sparks.\n\nPostcards and posters featuring Mantine leaping elegantly above the waves are popular souvenirs of Alola.It drifts through the sea searching"}', 1, '20260705'),
+('AboutUs', 'Professors', 'Cards', 1, '{"image":"colegio", "name":"Juan Rodriguez", "role":"Profesor de Filosofía", "description":"If it is attacked, Cascoon remains motionless however badly it may be hurt. It does so because if it were to move, its body would be weak upon evolution."}', 1, '20260705'),
+('AboutUs', 'Professors', 'Cards', 2, '{"image":"colegio", "name":"Juan Rodriguez", "role":"Profesor de Filosofía", "description":"If it is attacked, Cascoon remains motionless however badly it may be hurt. It does so because if it were to move, its body would be weak upon evolution."}', 1, '20260705'),
+('AboutUs', 'Professors', 'Cards', 3, '{"image":"colegio", "name":"Juan Rodriguez", "role":"Profesor de Filosofía", "description":"If it is attacked, Cascoon remains motionless however badly it may be hurt. It does so because if it were to move, its body would be weak upon evolution."}', 1, '20260705'),
+('AboutUs', 'Professors', 'Cards', 4, '{"image":"colegio", "name":"Juan Rodriguez", "role":"Profesor de Filosofía", "description":"If it is attacked, Cascoon remains motionless however badly it may be hurt. It does so because if it were to move, its body would be weak upon evolution."}', 1, '20260705'),
+('AboutUs', 'Professors', 'Cards', 5, '{"image":"colegio", "name":"Juan Rodriguez", "role":"Profesor de Filosofía", "description":"If it is attacked, Cascoon remains motionless however badly it may be hurt. It does so because if it were to move, its body would be weak upon evolution."}', 1, '20260705'),
+('Calendar', 'Events', 'Cards', 1, '{"date":"2026-01-01", "title":"Año nuevo", "category":"festivo", "duration":"Todo el día", "place":"Salón de eventos", "asistants":"Todo el colegio", "description":"My moneys in that office, right? If she start giving me some bullshit about it aint there, and we got to go someplace else and get it, Im gonna shoot you in the head then and there. Then Im gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. ", "color":"#cbd5e1"}', 1, '20260705'),
+('Calendar', 'Events', 'Cards', 2, '{"date":"2026-01-06", "title":"Día de Reyes", "category":"festivo", "duration":"Todo el día", "place":"Salón de eventos", "asistants":"Todo el colegio", "description":"My moneys in that office, right? If she start giving me some bullshit about it aint there, and we got to go someplace else and get it, Im gonna shoot you in the head then and there. Then Im gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. ", "color":"#cbd5e1"}', 1, '20260705'),
+('Calendar', 'Events', 'Cards', 3, '{"date":"2026-02-14", "title":"San Valentín", "category":"personal", "duration":"Todo el día", "place":"Salón de eventos", "asistants":"Todo el colegio", "description":"My moneys in that office, right? If she start giving me some bullshit about it aint there, and we got to go someplace else and get it, Im gonna shoot you in the head then and there. Then Im gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. ", "color":"#cbd5e1"}', 1, '20260705'),
+('Calendar', 'Events', 'Cards', 4, '{"date":"2026-03-20", "title":"Inicio primavera", "category":"otros", "duration":"Todo el día", "place":"Salón de eventos", "asistants":"Todo el colegio", "description":"My moneys in that office, right? If she start giving me some bullshit about it aint there, and we got to go someplace else and get it, Im gonna shoot you in the head then and there. Then Im gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. ", "color":"#cbd5e1"}', 1, '20260705'),
+('Calendar', 'Events', 'Cards', 5, '{"date":"2026-04-02", "title":"Jueves Santo", "category":"festivo", "duration":"Todo el día", "place":"Salón de eventos", "asistants":"Todo el colegio", "description":"My moneys in that office, right? If she start giving me some bullshit about it aint there, and we got to go someplace else and get it, Im gonna shoot you in the head then and there. Then Im gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. ", "color":"#cbd5e1"}', 1, '20260705'),
+('Calendar', 'Events', 'Cards', 6, '{"date":"2026-04-03", "title":"Viernes Santo", "category":"festivo", "duration":"Todo el día", "place":"Salón de eventos", "asistants":"Todo el colegio", "description":"My moneys in that office, right? If she start giving me some bullshit about it aint there, and we got to go someplace else and get it, Im gonna shoot you in the head then and there. Then Im gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. ", "color":"#cbd5e1"}', 1, '20260705'),
+('Calendar', 'Events', 'Cards', 7, '{"date":"2026-05-01", "title":"Día del trabajo", "category":"festivo", "duration":"Todo el día", "place":"Salón de eventos", "asistants":"Todo el colegio", "description":"My moneys in that office, right? If she start giving me some bullshit about it aint there, and we got to go someplace else and get it, Im gonna shoot you in the head then and there. Then Im gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. ", "color":"#cbd5e1"}', 1, '20260705'),
+('Calendar', 'Events', 'Cards', 8, '{"date":"2026-05-04", "title":"Reunión de equipo", "category":"trabajo", "duration":"Todo el día", "place":"Salón de eventos", "asistants":"Todo el colegio", "description":"My moneys in that office, right? If she start giving me some bullshit about it aint there, and we got to go someplace else and get it, Im gonna shoot you in the head then and there. Then Im gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. ", "color":"#cbd5e1"}', 1, '20260705'),
+('Calendar', 'Events', 'Cards', 9, '{"date":"2026-06-21", "title":"Solsticio de verano", "category":"otros", "duration":"Todo el día", "place":"Salón de eventos", "asistants":"Todo el colegio", "description":"My moneys in that office, right? If she start giving me some bullshit about it aint there, and we got to go someplace else and get it, Im gonna shoot you in the head then and there. Then Im gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. ", "color":"#cbd5e1"}', 1, '20260705'),
+('Calendar', 'Events', 'Cards', 10, '{"date":"2026-07-20", "title":"Independencia Colombia", "category":"festivo", "duration":"Todo el día", "place":"Salón de eventos", "asistants":"Todo el colegio", "description":"My moneys in that office, right? If she start giving me some bullshit about it aint there, and we got to go someplace else and get it, Im gonna shoot you in the head then and there. Then Im gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. ", "color":"#cbd5e1"}', 1, '20260705'),
+('Admissions', 'Introduction', 'Description', 1, '{"description":"When Dustox flaps its wings, a fine dust is scattered all over. This dust is actually a powerful poison that will even make a pro wrestler sick. This Pokémon searches for food using its antennae like radar.Slakoth’s heart beats just once a minute. Whatever happens, it is content to loaf around motionless. It is rare to see this Pokémon in motion.The flame that burns at the tip of its tail is an indication of its emotions. The flame wavers when Charmander is enjoying itself. If the Pokémon becomes enraged, the flame burns fiercely."}', 1, '20260705'),
+('Admissions', 'Steps', 'Cards', 1, '{"description":"You can hear tales told all over the world about how Gengar will pay a visit to children who are naughty"}', 1, '20260705'),
+('Admissions', 'Steps', 'Cards', 2, '{"description":"You can hear tales told all over the world about how Gengar will pay a visit to children who are naughty"}', 1, '20260705'),
+('Admissions', 'Steps', 'Cards', 3, '{"description":"You can hear tales told all over the world about how Gengar will pay a visit to children who are naughty"}', 1, '20260705'),
+('Admissions', 'Steps', 'Cards', 4, '{"description":"You can hear tales told all over the world about how Gengar will pay a visit to children who are naughty"}', 1, '20260705'),
+('Admissions', 'Steps', 'Cards', 5, '{"description":"You can hear tales told all over the world about how Gengar will pay a visit to children who are naughty"}', 1, '20260705'),
+('Admissions', 'Steps', 'Cards', 6, '{"description":"You can hear tales told all over the world about how Gengar will pay a visit to children who are naughty"}', 1, '20260705'),
+('Admissions', 'Steps', 'Cards', 7, '{"description":"You can hear tales told all over the world about how Gengar will pay a visit to children who are naughty"}', 1, '20260705');
+GO
+
 -- ============================================================
 -- FIN DEL SCRIPT
 -- ============================================================
